@@ -6,36 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <title>WORD GAME</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>word</title>
   </head>
   <body>
     <header>
-      <h1>WORD GAME</h1>
+      <h1>smack-blimp</h1>
     </header>
+    <section id="start">
+      <button id="start-button">start</button>
+    </section>
 
-    <main>
+    <main id="game" style="display: none">
       <section>
-        <h2>objective words</h2>
         <h3 id="objective-words"></h3>
       </section>
-      <section>
-        <ul id="input-words"></ul>
-      </section>
-      <section>
-        <h1>TYPE YOUR WORD</h1>
 
-        <div id="word-box">
-          <div id="word"></div>
-        </div>
-      </section>
+      <!-- <section>
+        <ul id="input-words"></ul>
+      </section> -->
       <section>
-        <button id="input-button">ENTER</button>
+        <!-- <h1>TYPE YOUR WORD</h1> -->
+        <div id="word-box"></div>
       </section>
+
       <section>
-        <button id="start-button">START</button>
-      </section>
-      <section>
-        <input id="input-text" type="text" />
+        <div id="word"></div>
+        <input id="input-text" type="text" maxlength="5" />
+        <button id="input-button">enter</button>
       </section>
     </main>
 

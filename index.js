@@ -1,20 +1,26 @@
 const chosenWordDisplay = document.getElementById("objective-words");
 const startButton = document.getElementById("start-button");
+const startWindow = document.getElementById("start");
 const inputButton = document.getElementById("input-button");
 const inputWords = document.getElementById("input-words");
 const word = document.getElementById("word");
 const inputText = document.getElementById("input-text");
 const wordBox = document.getElementById("word-box");
+const gameWindow = document.getElementById("game");
 
 const wordList = [
-  ["ROBOT", "WINCE"],
-  ["POWER", "GUILD"],
+  ["robot", "wince"],
+  ["power", "guild"],
 ];
 
 function runGame() {
+  startWindow.remove();
+
+  gameWindow.style.removeProperty("display");
+
   const gameWords = getWords();
 
-  chosenWordDisplay.textContent = gameWords;
+  chosenWordDisplay.textContent = `${gameWords[0]} >>> ${gameWords[1]}`;
 
   currentWord = gameWords[0];
 
@@ -28,9 +34,7 @@ let currentWord;
 function addWord() {
   let count = 0;
 
-  const upperCase = inputText.value.toUpperCase();
-
-  const addWordArray = upperCase.split("");
+  const addWordArray = inputText.value.split("");
 
   const currentWordArray = currentWord.split("");
 
@@ -50,6 +54,7 @@ function addWord() {
 
   if (count >= 3) {
     const newWordDiv = document.createElement("div");
+    newWordDiv.classList.add("typed-words");
     wordBox.appendChild(newWordDiv);
     for (let i = 0; i < addWordArray.length; i++) {
       const newLetter = document.createElement("div");
@@ -79,7 +84,7 @@ function displayLetter() {
   const inputArray = inputText.value.split("");
   for (let i = 0; i < inputArray.length; i++) {
     const newLetter = document.createElement("div");
-    newLetter.textContent = inputArray[i].toUpperCase();
+    newLetter.textContent = inputArray[i];
     word.appendChild(newLetter);
   }
 }
