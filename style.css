@@ -31,19 +31,33 @@ header {
   gap: 30px;
 }
 
-#word-box {
+#words-section {
   border-width: 1px;
   border-style: solid;
   border-color: black;
-  width: 4rem;
+  width: 30vw;
 }
 
 #word {
   display: flex;
   flex-direction: row;
+  font-size: 300%;
+}
+
+#past-word {
+  color: black;
 }
 
 .typed-words {
   display: flex;
   flex-direction: row;
+  font-size: 300%;
+}
+
+.correct-letter {
+  color: plum;
+}
+
+.past-word {
+  color: red;
 }
