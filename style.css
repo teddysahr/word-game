@@ -62,7 +62,6 @@ header {
 #input-text:focus {
   outline: none;
   text-align: center;
-  caret: underscore;
 }
 
 #user-area {
