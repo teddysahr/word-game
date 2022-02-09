@@ -48,7 +48,7 @@ function runGame() {
   const lastWordDiv = document.createElement("div");
 
   lastWordDiv.classList.add("typed-words");
-  lastWordDiv.textContent = gameWords[1];
+  lastWordDiv.textContent = `target word: ${gameWords[1]}`;
   targetWord.appendChild(lastWordDiv);
 
   console.log(currentWord);
