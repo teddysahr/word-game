@@ -1,4 +1,4 @@
-const chosenWordDisplay = document.getElementById("objective-words");
+// const chosenWordDisplay = document.getElementById("objective-words");
 const startButton = document.getElementById("start-button");
 const startWindow = document.getElementById("start");
 const inputButton = document.getElementById("input-button");
@@ -17,6 +17,14 @@ const wordList = [
 
 let gameWords;
 
+let currentWord;
+
+let scoreCount = 1;
+
+function getWords() {
+  return wordList[Math.floor(Math.random() * wordList.length)];
+}
+
 function runGame() {
   startWindow.remove();
 
@@ -26,7 +34,7 @@ function runGame() {
 
   gameWords = getWords();
 
-  chosenWordDisplay.textContent = `${gameWords[0]} >>> ${gameWords[1]}`;
+  // chosenWordDisplay.textContent = `${gameWords[0]} >>> ${gameWords[1]}`;
 
   currentWord = gameWords[0];
 
@@ -72,8 +80,6 @@ function checkWin(arr) {
   }
 }
 
-let currentWord;
-
 function addWord() {
   let count = 0;
 
@@ -103,22 +109,11 @@ function addWord() {
     newWordDiv.textContent = inputText.value;
     newWordDiv.id = "object-word";
     wordBox.appendChild(newWordDiv);
-    // for (let i = 0; i < addWordArray.length; i++) {
-    //   if (addWordArray[i] in compareWordObj) {
-    //     const newLetter = document.createElement("div");
-    //     newLetter.textContent = addWordArray[i];
-    //     newLetter.classList.add("correct-letter");
-    //     newWordDiv.appendChild(newLetter);
-    //   } else {
-    //     const newLetter = document.createElement("div");
-    //     newLetter.textContent = addWordArray[i];
-    //     newWordDiv.appendChild(newLetter);
-    //   }
-    // }
     currentWord = addWordArray.join("");
     count = 0;
     word.innerHTML = "";
     inputText.value = "";
+    scoreCount++;
     if (checkWin(addWordArray)) {
       console.log("You won");
     } else {
@@ -134,10 +129,6 @@ function addWord() {
   console.log(compareWordObj);
 }
 
-function getWords() {
-  return wordList[Math.floor(Math.random() * wordList.length)];
-}
-
 function displayLetter() {
   const currentWordArray = currentWord.split("");
 
@@ -149,7 +140,8 @@ function displayLetter() {
     compareWordObj[letter] = true;
   }
   word.innerHTML = "";
-  const inputArray = inputText.value.split("");
+  const lowerCase = inputText.value.toLowerCase();
+  const inputArray = lowerCase.split("");
   for (let i = 0; i < inputArray.length; i++) {
     if (inputArray[i] in compareWordObj) {
       const newLetter = document.createElement("div");
