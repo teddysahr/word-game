@@ -8,6 +8,7 @@ const inputText = document.getElementById("input-text");
 const wordBox = document.getElementById("word-box");
 const gameWindow = document.getElementById("game");
 const targetWord = document.getElementById("target-word");
+gsap.from(".title", { duration: 1, y: "-200%" });
 
 const wordList = [
   ["robot", "wince"],
@@ -25,8 +26,16 @@ function getWords() {
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
-function runGame() {
+async function runGame() {
+  await gsap.to("#start", { duration: 0.5, opacity: 0 });
   startWindow.remove();
+  gsap.from("#game", {
+    duration: 0.5,
+    y: "10px",
+    opacity: 0,
+  });
+
+  // startWindow.remove();
 
   gameWindow.style.removeProperty("display");
 
@@ -48,7 +57,7 @@ function runGame() {
   const lastWordDiv = document.createElement("div");
 
   lastWordDiv.classList.add("typed-words");
-  lastWordDiv.textContent = `target word: ${gameWords[1]}`;
+  lastWordDiv.textContent = gameWords[1];
   targetWord.appendChild(lastWordDiv);
 
   console.log(currentWord);

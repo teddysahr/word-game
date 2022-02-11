@@ -85,3 +85,7 @@ header {
 .past-word {
   color: red;
 }
+
+#target-icon {
+  height: 10px;
+}
