@@ -12995,6 +12995,7 @@ const wordList = [
   ["robot", "wince"],
   ["power", "guild"],
   ["smack", "blimp"],
+  ["brick", "slant"],
 ];
 
 let gameWords;
@@ -13015,6 +13016,8 @@ async function runGame() {
     y: "10px",
     opacity: 0,
   });
+
+  targetWord.classList.remove("animate__heartBeat");
 
   wordBox.innerHTML = "";
   word.innerHTML = "";
@@ -13153,7 +13156,7 @@ function addWord() {
       "word must contain at least three letters from the previous word!"
     );
     count = 0;
-  } else if (scoreCount < 4) {
+  } else if (scoreCount < 3) {
     document.getElementById("object-word").id = "past-word";
     const newWordDiv = document.createElement("div");
     newWordDiv.classList.add("typed-words");
@@ -13169,11 +13172,12 @@ function addWord() {
     if (checkWin(addWordArray)) {
       inputArea.style.display = "none";
       gameWin.style.removeProperty("display");
+      targetWord.classList.add("animate__heartBeat");
       return;
     }
-  } else if (scoreCount === 4 && !checkWin(addWordArray)) {
+  } else if (scoreCount === 3 && !checkWin(addWordArray)) {
     showAlert("must complete on this turn");
-  } else if (scoreCount === 4 && checkWin(addWordArray)) {
+  } else if (scoreCount === 3 && checkWin(addWordArray)) {
     document.getElementById("object-word").id = "past-word";
     const newWordDiv = document.createElement("div");
     newWordDiv.classList.add("typed-words");
@@ -13187,6 +13191,7 @@ function addWord() {
     inputText.value = "";
     inputArea.style.display = "none";
     gameWin.style.removeProperty("display");
+    targetWord.classList.add("animate__heartBeat");
     return;
   }
 
@@ -13198,21 +13203,39 @@ function addWord() {
 function displayLetter() {
   const currentWordArray = currentWord.split("");
 
+  const finalWordArray = gameWords[1].split("");
+
   const compareWordObj = {};
+
+  const finalWordObj = {};
 
   console.log(currentWordArray);
 
   for (letter of currentWordArray) {
     compareWordObj[letter] = true;
   }
+
+  for (letter of finalWordArray) {
+    finalWordObj[letter] = true;
+  }
   word.innerHTML = "";
   const lowerCase = inputText.value.toLowerCase();
   const inputArray = lowerCase.split("");
   for (let i = 0; i < inputArray.length; i++) {
-    if (inputArray[i] in compareWordObj) {
+    if (inputArray[i] in finalWordObj && inputArray[i] in compareWordObj) {
       const newLetter = document.createElement("div");
       newLetter.textContent = inputArray[i];
-      newLetter.classList.add("correct-letter");
+      newLetter.classList.add("purple-letter");
+      word.appendChild(newLetter);
+    } else if (inputArray[i] in compareWordObj) {
+      const newLetter = document.createElement("div");
+      newLetter.textContent = inputArray[i];
+      newLetter.classList.add("red-letter");
+      word.appendChild(newLetter);
+    } else if (inputArray[i] in finalWordObj) {
+      const newLetter = document.createElement("div");
+      newLetter.textContent = inputArray[i];
+      newLetter.classList.add("blue-letter");
       word.appendChild(newLetter);
     } else {
       const newLetter = document.createElement("div");

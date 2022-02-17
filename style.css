@@ -1,16 +1,27 @@
 * {
-  /* -webkit-text-stroke: 2px black; */
-  font-size: 16px;
+  /* font-size: 16px; */
   font-family: "Space Grotesk", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-size: clamp(0.1rem, 2.5vmin, 1.5rem);
 }
 
 header {
   display: flex;
   justify-content: center;
-  font-size: 300%;
+  font-size: 2rem;
   color: black;
-  padding: 2rem;
+  padding: 0.2rem;
   font-family: "Space Grotesk", sans-serif;
+}
+
+button {
+  font-size: 1em;
 }
 
 #start {
@@ -21,29 +32,28 @@ header {
   align-items: center;
 }
 
-#objective-words {
-  font-size: 200%;
-}
-
 #game {
+  padding-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
-  height: 70vh;
+  height: 85%;
+
+  justify-content: space-between;
 }
 
 #words-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70%;
+  flex-grow: 1;
+  font-size: 3.5em;
 }
 
 #word {
   display: flex;
   flex-direction: row;
-  font-size: 300%;
+  /* font-size: 300%; */
 }
 
 #past-word {
@@ -55,23 +65,26 @@ header {
   border-left: 0px;
   border-right: 0px;
   border-bottom: 2px;
-  width: 70px;
+  width: 6em;
   border-style: solid;
   border-color: plum;
   text-align: center;
+  font-size: 1em;
 }
 
 #input-text:focus {
   outline: none;
   text-align: center;
+  font-size: 1em;
 }
 
 #user-area {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
-  height: 30%;
+  gap: 1em;
+  height: fit-content;
+  padding-bottom: 1em;
 }
 
 #input-area {
@@ -79,7 +92,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 5px;
+  gap: 1em;
 }
 
 #game-end-win {
@@ -92,16 +105,20 @@ header {
 .typed-words {
   /* display: flex;
   flex-direction: row; */
-  font-size: 300%;
+  /* font-size: 300%; */
   text-align: center;
 }
 
-.correct-letter {
-  color: plum;
+.blue-letter {
+  color: blue;
 }
 
-.past-word {
+.red-letter {
   color: red;
+}
+
+.purple-letter {
+  color: purple;
 }
 
 .alert-container {
