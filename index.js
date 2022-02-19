@@ -14,6 +14,7 @@ const gameWin = document.getElementById("game-end-win");
 const startOverButton = document.getElementById("start-over-button");
 const alertContainer = document.querySelector("[data-alert-container]");
 const goAgain = document.getElementById("go-again");
+const winMessage = document.getElementById("win-message");
 gsap.from(".title", { duration: 1, y: "-200%" });
 
 const dictionary = [
@@ -13013,7 +13014,7 @@ async function runGame() {
   startWindow.remove();
   gsap.from("#game", {
     duration: 0.5,
-    y: "10px",
+    y: "-10px",
     opacity: 0,
   });
 
@@ -13172,7 +13173,16 @@ function addWord() {
     if (checkWin(addWordArray)) {
       inputArea.style.display = "none";
       gameWin.style.removeProperty("display");
+      newWordDiv.classList.remove("correct-letter");
       targetWord.classList.add("animate__heartBeat");
+      gsap.from("#game-end-win", {
+        duration: 0.5,
+        y: "-10px",
+        opacity: 0,
+      });
+      winMessage.textContent = `you got from "${gameWords[0]}" to "${
+        gameWords[1]
+      }" in ${scoreCount - 1} degrees`;
       return;
     }
   } else if (scoreCount === 3 && !checkWin(addWordArray)) {
@@ -13181,7 +13191,7 @@ function addWord() {
     document.getElementById("object-word").id = "past-word";
     const newWordDiv = document.createElement("div");
     newWordDiv.classList.add("typed-words");
-    newWordDiv.classList.add("correct-letter");
+    // newWordDiv.classList.add("correct-letter");
     newWordDiv.textContent = inputText.value;
     newWordDiv.id = "object-word";
     wordBox.appendChild(newWordDiv);
@@ -13191,7 +13201,13 @@ function addWord() {
     inputText.value = "";
     inputArea.style.display = "none";
     gameWin.style.removeProperty("display");
+    winMessage.textContent = `you got from "${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount} degrees`;
     targetWord.classList.add("animate__heartBeat");
+    gsap.from("#game-end-win", {
+      duration: 0.5,
+      y: "-10px",
+      opacity: 0,
+    });
     return;
   }
 
@@ -13222,20 +13238,10 @@ function displayLetter() {
   const lowerCase = inputText.value.toLowerCase();
   const inputArray = lowerCase.split("");
   for (let i = 0; i < inputArray.length; i++) {
-    if (inputArray[i] in finalWordObj && inputArray[i] in compareWordObj) {
+    if (inputArray[i] in compareWordObj) {
       const newLetter = document.createElement("div");
       newLetter.textContent = inputArray[i];
-      newLetter.classList.add("purple-letter");
-      word.appendChild(newLetter);
-    } else if (inputArray[i] in compareWordObj) {
-      const newLetter = document.createElement("div");
-      newLetter.textContent = inputArray[i];
-      newLetter.classList.add("red-letter");
-      word.appendChild(newLetter);
-    } else if (inputArray[i] in finalWordObj) {
-      const newLetter = document.createElement("div");
-      newLetter.textContent = inputArray[i];
-      newLetter.classList.add("blue-letter");
+      newLetter.classList.add("correct-letter");
       word.appendChild(newLetter);
     } else {
       const newLetter = document.createElement("div");
