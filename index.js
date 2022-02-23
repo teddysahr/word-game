@@ -13114,7 +13114,11 @@ function addWord() {
 
   const wordString = inputText.value.toString();
 
-  const addWordArray = inputText.value.split("");
+  const lowerCaseWordString = wordString.toLowerCase();
+
+  const allLowerCase = inputText.value.toLowerCase();
+
+  const addWordArray = allLowerCase.split("");
 
   const currentWordArray = currentWord.split("");
 
@@ -13147,7 +13151,7 @@ function addWord() {
     return;
   }
 
-  if (!dictionary.includes(wordString)) {
+  if (!dictionary.includes(lowerCaseWordString)) {
     showAlert("not a word!");
     inputText.focus();
     count = 0;
@@ -13162,7 +13166,7 @@ function addWord() {
     const newWordDiv = document.createElement("div");
     newWordDiv.classList.add("typed-words");
     newWordDiv.classList.add("correct-letter");
-    newWordDiv.textContent = inputText.value;
+    newWordDiv.textContent = inputText.value.toLowerCase();
     newWordDiv.id = "object-word";
     wordBox.appendChild(newWordDiv);
     currentWord = addWordArray.join("");
@@ -13192,7 +13196,7 @@ function addWord() {
     const newWordDiv = document.createElement("div");
     newWordDiv.classList.add("typed-words");
     // newWordDiv.classList.add("correct-letter");
-    newWordDiv.textContent = inputText.value;
+    newWordDiv.textContent = inputText.value.toLowerCase();
     newWordDiv.id = "object-word";
     wordBox.appendChild(newWordDiv);
     currentWord = addWordArray.join("");

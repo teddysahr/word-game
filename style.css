@@ -61,17 +61,17 @@ button:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   gap: 3em;
   padding: 3em;
 }
 
 #game {
-  padding-top: 2em;
+  padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 85%;
+  height: 65%;
 
   justify-content: space-between;
 }
@@ -82,7 +82,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  font-size: 3.5em;
+  font-size: 2.5em;
 }
 
 #word {
@@ -118,7 +118,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   gap: 1em;
-  height: fit-content;
+  /* height: fit-content; */
   padding-top: 1em;
   padding-bottom: 1em;
 }
