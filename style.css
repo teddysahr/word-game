@@ -3,16 +3,14 @@
   font-family: "Space Grotesk", sans-serif;
 }
 
-html,
+/* html, */
 body {
   font-family: "Space Grotesk", sans-serif;
-  display: flex;
-  flex-direction: column;
+
   width: 100%;
-  height: 44vh;
-  overflow: hidden;
+  min-height: 100vh;
   margin: 0;
-  font-size: clamp(0.01rem, 2.5vmin, 2.4rem);
+  font-size: clamp(0.8rem, 2.5vmin, 2rem);
 }
 
 header {
@@ -72,18 +70,18 @@ button:hover {
   flex-direction: column;
   align-items: center;
 
-  min-height: 100%;
+  /* height: 90vh;
+  width: 100%;
 
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 #words-section {
-  padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   /* flex-grow: 1; */
-  font-size: 2.5em;
+  font-size: 4em;
 }
 
 #word {
@@ -94,6 +92,53 @@ button:hover {
 
 #past-word {
   color: black;
+}
+
+#keyboard-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(auto, 1.25em));
+  grid-auto-rows: 3em;
+  gap: 0.25em;
+  justify-content: center;
+  padding: 1em;
+  position: absolute;
+  bottom: 0;
+}
+
+.key {
+  font-size: inherit;
+  grid-column: span 2;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(
+    var(--hue, 200),
+    var(--saturation, 1%),
+    calc(var(--lightness-offset, 0%) + var(--lightness, 51%))
+  );
+  color: white;
+  fill: white;
+  text-transform: uppercase;
+  border-radius: 0.25em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.key.large {
+  grid-column: span 3;
+}
+
+.key > svg {
+  width: 1.75em;
+  height: 1.75em;
 }
 
 #input-text {
@@ -130,6 +175,7 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   gap: 1em;
+  display: none;
 }
 
 #game-end-win {

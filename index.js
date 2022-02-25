@@ -13270,13 +13270,21 @@ function showAlert(message, duration = 1000) {
   }, duration);
 }
 
+function typeButton(e) {
+  if (e.key.match(/^[a-z]$/) && inputText.value.length < 5) {
+    inputText.value = inputText.value += e.key;
+  } else if (e.key === "Backspace") {
+    inputText.value = inputText.value.substring(0, inputText.value.length - 1);
+  }
+}
+
 startButton.addEventListener("click", runGame);
 
 inputButton.addEventListener("click", addWord);
 
-inputText.addEventListener("keyup", displayLetter);
+document.addEventListener("keyup", displayLetter);
 
-inputText.addEventListener("keyup", function (event) {
+document.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     inputButton.click();
   }
@@ -13285,3 +13293,5 @@ inputText.addEventListener("keyup", function (event) {
 startOverButton.addEventListener("click", startOver);
 
 goAgain.addEventListener("click", runGame);
+
+document.addEventListener("keydown", typeButton);
