@@ -7,7 +7,6 @@
   overflow: hidden;
   height: -webkit-fill-available;
 } */
-
 html,
 body {
   font-family: "Space Grotesk", sans-serif;
@@ -23,7 +22,7 @@ body {
   min-height: -webkit-fill-available;
   min-height: fill-available;
   margin: 0;
-  font-size: clamp(0.1rem, 2.5vmin, 2.5rem);
+  font-size: clamp(0.8rem, 2vmin, 2.5rem);
   /* overflow: hidden; */
 }
 
@@ -36,10 +35,11 @@ header {
 }
 
 #border {
-  height: 5px;
+  height: 2px;
   background: linear-gradient(-30deg, plum, white, plum, white, plum);
   background-size: 400% 400%;
   animation: gradient 15s ease-in-out infinite;
+  width: 100vw;
 }
 
 @keyframes gradient {
@@ -103,10 +103,9 @@ button:hover {
   flex-direction: column;
   align-items: center;
   /* flex-grow: 1; */
-  font-size: 3.5em;
+  font-size: 4em;
 
   width: fit-content;
-  margin-bottom: 4em;
 }
 
 #word {
