@@ -71,7 +71,6 @@ button:hover {
 } */
 
 #start {
-  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -195,11 +194,6 @@ button:hover {
 }
 
 #input-area {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1em;
   display: none;
 }
 

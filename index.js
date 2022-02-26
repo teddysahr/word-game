@@ -8,8 +8,6 @@ const inputText = document.getElementById("input-text");
 const wordBox = document.getElementById("word-box");
 const gameWindow = document.getElementById("game");
 const targetWord = document.getElementById("target-word");
-const userArea = document.getElementById("user-area");
-const inputArea = document.getElementById("input-area");
 const gameWin = document.getElementById("game-end-win");
 const startOverButton = document.getElementById("start-over-button");
 const alertContainer = document.querySelector("[data-alert-container]");
@@ -13024,22 +13022,14 @@ async function runGame() {
   word.innerHTML = "";
   count = 0;
   inputText.value = "";
-  inputText.focus();
   scoreCount = 1;
   targetWord.innerHTML = "";
 
   gameWin.style.display = "none";
-  inputArea.style.removeProperty("display");
-
-  // startWindow.remove();
 
   gameWindow.style.removeProperty("display");
 
-  inputText.focus();
-
   gameWords = getWords();
-
-  // chosenWordDisplay.textContent = `${gameWords[0]} >>> ${gameWords[1]}`;
 
   currentWord = gameWords[0];
 
@@ -13175,7 +13165,6 @@ function addWord() {
     inputText.value = "";
     scoreCount++;
     if (checkWin(addWordArray)) {
-      inputArea.style.display = "none";
       gameWin.style.removeProperty("display");
       newWordDiv.classList.remove("correct-letter");
       targetWord.classList.add("animate__heartBeat");
@@ -13203,7 +13192,6 @@ function addWord() {
     count = 0;
     word.innerHTML = "";
     inputText.value = "";
-    inputArea.style.display = "none";
     gameWin.style.removeProperty("display");
     winMessage.textContent = `you got from "${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount} degrees`;
     targetWord.classList.add("animate__heartBeat");
