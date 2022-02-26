@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-size: clamp(0.8rem, 2.5vmin, 2rem);
+  overflow: hidden;
 }
 
 header {
@@ -126,7 +127,7 @@ button:hover {
   );
   color: white;
   fill: white;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   border-radius: 0.25em;
   cursor: pointer;
   user-select: none;
