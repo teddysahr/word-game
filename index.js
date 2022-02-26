@@ -13,7 +13,9 @@ const startOverButton = document.getElementById("start-over-button");
 const alertContainer = document.querySelector("[data-alert-container]");
 const goAgain = document.getElementById("go-again");
 const winMessage = document.getElementById("win-message");
+const keyBoard = document.querySelector(".keyboard");
 gsap.from(".title", { duration: 1, y: "-200%" });
+gsap.from("#start", { duration: 2, opacity: 0 });
 
 const dictionary = [
   "aahed",
@@ -13016,6 +13018,24 @@ async function runGame() {
     opacity: 0,
   });
 
+  gsap.from(".keyboard", {
+    duration: 0.5,
+    y: "-10px",
+    opacity: 0,
+  });
+
+  document.addEventListener("mousedown", clickButton);
+
+  document.addEventListener("mouseup", displayLetter);
+
+  document.addEventListener("keyup", displayLetter);
+
+  document.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      inputButton.click();
+    }
+  });
+
   targetWord.classList.remove("animate__heartBeat");
 
   wordBox.innerHTML = "";
@@ -13028,6 +13048,8 @@ async function runGame() {
   gameWin.style.display = "none";
 
   gameWindow.style.removeProperty("display");
+
+  keyBoard.style.removeProperty("display");
 
   gameWords = getWords();
 
@@ -13165,6 +13187,7 @@ function addWord() {
     inputText.value = "";
     scoreCount++;
     if (checkWin(addWordArray)) {
+      keyBoard.style.display = "none";
       gameWin.style.removeProperty("display");
       newWordDiv.classList.remove("correct-letter");
       targetWord.classList.add("animate__heartBeat");
@@ -13192,6 +13215,7 @@ function addWord() {
     count = 0;
     word.innerHTML = "";
     inputText.value = "";
+    keyBoard.style.display = "none";
     gameWin.style.removeProperty("display");
     winMessage.textContent = `you got from "${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount} degrees`;
     targetWord.classList.add("animate__heartBeat");
@@ -13286,18 +13310,6 @@ function clickButton(e) {
 startButton.addEventListener("click", runGame);
 
 inputButton.addEventListener("click", addWord);
-
-document.addEventListener("mousedown", clickButton);
-
-document.addEventListener("mouseup", displayLetter);
-
-document.addEventListener("keyup", displayLetter);
-
-document.addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
-    inputButton.click();
-  }
-});
 
 startOverButton.addEventListener("click", startOver);
 
