@@ -47,7 +47,7 @@ header {
   }
 }
 
-button {
+/* button {
   font-size: 1.5em;
   border: none;
   background-color: white;
@@ -57,7 +57,7 @@ button:hover {
   border: none;
   outline: none;
   color: plum;
-}
+} */
 
 #start {
   margin-top: 4rem;
