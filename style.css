@@ -3,21 +3,20 @@
   font-family: "Space Grotesk", sans-serif;
 }
 
-html {
+/* html {
   overflow: hidden;
   height: -webkit-fill-available;
-}
-
+} */
 body {
   font-family: "Space Grotesk", sans-serif;
 
-  width: 100%;
+  /* width: 100%; */
   min-height: 100vh;
   min-height: -webkit-fill-available;
   min-height: fill-available;
   margin: 0;
   font-size: clamp(0.8rem, 2.5vmin, 2rem);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 header {
@@ -76,19 +75,25 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-content: space-between; */
+  /* align-items: center; */
 
-  /* height: 90vh;
-  width: 100%;
+  min-height: 90vh;
 
-  justify-content: space-between; */
+  /* height: -webkit-fill-available;
+  height: fill-available; */
+  /* width: 100%; */
 }
 
 #words-section {
+  padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* flex-grow: 1; */
-  font-size: 3em;
+  flex-grow: 1;
+  font-size: 3.5em;
+
+  width: fit-content;
 }
 
 #word {
@@ -101,21 +106,21 @@ button:hover {
   color: black;
 }
 
-#keyboard-section {
+/* #keyboard-section {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
+} */
 
 .keyboard {
   display: grid;
   grid-template-columns: repeat(20, minmax(auto, 1.25em));
   grid-auto-rows: 4.5em;
-  gap: 0.25em;
+  gap: 0.5em;
   justify-content: center;
   padding: 1em;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
 }
 
 .key {

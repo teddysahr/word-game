@@ -13222,7 +13222,7 @@ function addWord() {
 
 function displayLetter() {
   const currentWordArray = currentWord.split("");
-
+  console.log(currentWordArray);
   const finalWordArray = gameWords[1].split("");
 
   const compareWordObj = {};
@@ -13278,9 +13278,30 @@ function typeButton(e) {
   }
 }
 
+function clickButton(e) {
+  if (e.target.matches("[data-key]") && inputText.value.length < 5) {
+    inputText.value = inputText.value += e.target.dataset.key;
+    return;
+  }
+
+  if (e.target.matches("[data-enter]")) {
+    inputButton.click();
+    return;
+  }
+
+  if (e.target.matches("[data-delete]")) {
+    inputText.value = inputText.value.substring(0, inputText.value.length - 1);
+    return;
+  }
+}
+
 startButton.addEventListener("click", runGame);
 
 inputButton.addEventListener("click", addWord);
+
+document.addEventListener("mousedown", clickButton);
+
+document.addEventListener("mouseup", displayLetter);
 
 document.addEventListener("keyup", displayLetter);
 
