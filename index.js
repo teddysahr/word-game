@@ -13030,11 +13030,7 @@ async function runGame() {
 
   document.addEventListener("keyup", displayLetter);
 
-  document.addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-      inputButton.click();
-    }
-  });
+  document.addEventListener("keydown", typeButton);
 
   targetWord.classList.remove("animate__heartBeat");
 
@@ -13110,7 +13106,6 @@ function startOver() {
   word.innerHTML = "";
   count = 0;
   inputText.value = "";
-  inputText.focus();
   scoreCount = 1;
   const firstWordDiv = document.createElement("div");
   firstWordDiv.classList.add("correct-letter");
@@ -13158,14 +13153,12 @@ function addWord() {
 
   if (addWordArray.length < 5) {
     showAlert("not enough letters!");
-    inputText.focus();
     count = 0;
     return;
   }
 
   if (!dictionary.includes(lowerCaseWordString)) {
     showAlert("not a word!");
-    inputText.focus();
     count = 0;
     return;
   } else if (count < 3) {
@@ -13285,8 +13278,14 @@ function showAlert(message, duration = 1000) {
 function typeButton(e) {
   if (e.key.match(/^[a-z]$/) && inputText.value.length < 5) {
     inputText.value = inputText.value += e.key;
-  } else if (e.key === "Backspace") {
+  }
+
+  if (e.key === "Backspace") {
     inputText.value = inputText.value.substring(0, inputText.value.length - 1);
+  }
+
+  if (e.key === "Enter") {
+    inputButton.click();
   }
 }
 
@@ -13314,5 +13313,3 @@ inputButton.addEventListener("click", addWord);
 startOverButton.addEventListener("click", startOver);
 
 goAgain.addEventListener("click", runGame);
-
-document.addEventListener("keydown", typeButton);

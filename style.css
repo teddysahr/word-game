@@ -1,29 +1,20 @@
 * {
-  /* font-size: 16px; */
   font-family: "Space Grotesk", sans-serif;
 }
 
-/* html {
-  overflow: hidden;
-  height: -webkit-fill-available;
-} */
 html,
 body {
   font-family: "Space Grotesk", sans-serif;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex: 1;
-
-  /* width: 100%; */
   min-height: 100vh;
   min-height: -webkit-fill-available;
   min-height: fill-available;
   margin: 0;
   font-size: clamp(0.8rem, 2vmin, 2.5rem);
-  /* overflow: hidden; */
 }
 
 header {
@@ -58,17 +49,17 @@ button {
   touch-action: manipulation;
 }
 
-/* button {
-  font-size: 1.5em;
+.btn {
+  font-size: 2rem;
   border: none;
   background-color: white;
 }
 
-button:hover {
+.btn:hover {
   border: none;
   outline: none;
   color: plum;
-} */
+}
 
 #start {
   display: flex;
@@ -76,24 +67,15 @@ button:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.25em;
   gap: 3em;
   padding: 3em;
 }
 
 #game {
-  /* padding-top: 1em; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
-  /* align-items: center; */
-
-  /* min-height: 90vh; */
-
-  /* height: -webkit-fill-available;
-  height: fill-available; */
-  /* width: 100%; */
 }
 
 #words-section {
@@ -101,27 +83,18 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* flex-grow: 1; */
   font-size: 4em;
-
   width: fit-content;
 }
 
 #word {
   display: flex;
   flex-direction: row;
-  /* font-size: 300%; */
 }
 
 #past-word {
   color: black;
 }
-
-/* #keyboard-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-} */
 
 .keyboard {
   display: grid;
@@ -130,8 +103,6 @@ button:hover {
   gap: 0.5em;
   justify-content: center;
   padding: 1em;
-  /* position: absolute;
-  bottom: 0; */
 }
 
 .key {
@@ -164,34 +135,6 @@ button:hover {
   grid-column: span 3;
 }
 
-#input-text {
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 1px;
-  width: 6em;
-  border-style: solid;
-  border-color: plum;
-  text-align: center;
-  font-size: 1.5em;
-}
-
-#input-text:focus {
-  outline: none;
-  text-align: center;
-  font-size: 1.5em;
-}
-
-#user-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
-  /* height: fit-content; */
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
-
 #input-area {
   display: none;
 }
@@ -199,7 +142,6 @@ button:hover {
 #game-end-win {
   display: flex;
   flex-direction: column;
-
   align-items: center;
   text-align: center;
   gap: 1em;
@@ -212,18 +154,11 @@ button:hover {
 }
 
 .typed-words {
-  /* display: flex;
-  flex-direction: row; */
-  /* font-size: 300%; */
   text-align: center;
 }
 
 .correct-letter {
   color: plum;
-}
-
-.target-letter {
-  color: rgb(255, 227, 67);
 }
 
 .alert-container {
@@ -256,3 +191,5 @@ button:hover {
 .alert.hide {
   opacity: 0;
 }
+
+/* FINISH START SCREEN, ADD ANIMATIONS */
