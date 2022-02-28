@@ -72,6 +72,10 @@ button {
   padding: 3em;
 }
 
+.image {
+  width: 12em;
+}
+
 #game {
   display: flex;
   flex-direction: column;
@@ -122,12 +126,8 @@ button {
   user-select: none;
 }
 
-.key:hover {
-  color: plum;
-}
-
 .key:active {
-  background: plum;
+  background: rgb(218, 158, 218);
   color: white;
 }
 
