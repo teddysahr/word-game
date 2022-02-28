@@ -19,12 +19,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
 
-    <title>word</title>
+    <title>33</title>
   </head>
   <body>
     <section>
       <header>
+        <button id="help-button">?</button>
         <h1 class="title"><span>3</span><span>3</span></h1>
+        <button id="about-button">*</button>
       </header>
       <div id="border"></div>
       <div id="start">
@@ -95,6 +97,44 @@
       <button class="key" data-key="N">N</button>
       <button class="key" data-key="M">M</button>
       <button data-delete class="key large"><<<</button>
+    </div>
+
+    <!-- MODALS -->
+
+    <!-- HELP -->
+    <div id="help-modal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>HELP</h2>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the Modal Body</p>
+          <p>Some other text...</p>
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="about-modal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>ABOUT</h2>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the Modal Body</p>
+          <p>Some other text...</p>
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
     </div>
 
     <script

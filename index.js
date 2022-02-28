@@ -14,8 +14,21 @@ const alertContainer = document.querySelector("[data-alert-container]");
 const goAgain = document.getElementById("go-again");
 const winMessage = document.getElementById("win-message");
 const keyBoard = document.querySelector(".keyboard");
+const helpButton = document.getElementById("help-button");
+const helpModal = document.getElementById("help-modal");
+const aboutButton = document.getElementById("about-button");
+const aboutModal = document.getElementById("about-modal");
+
 gsap.from(".title", { duration: 1, y: "-200%" });
 gsap.from("#start", { duration: 2, opacity: 0 });
+
+helpButton.onclick = function () {
+  helpModal.style.display = "block";
+};
+
+aboutButton.onclick = function () {
+  aboutModal.style.display = "block";
+};
 
 const dictionary = [
   "aahed",
