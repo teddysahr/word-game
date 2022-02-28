@@ -13191,7 +13191,7 @@ function addWord() {
       });
       winMessage.textContent = `you got from "${gameWords[0]}" to "${
         gameWords[1]
-      }" in ${scoreCount - 1} degrees`;
+      }" in ${scoreCount - 1} tries`;
       return;
     }
   } else if (scoreCount === 3 && !checkWin(addWordArray)) {
@@ -13210,7 +13210,7 @@ function addWord() {
     inputText.value = "";
     keyBoard.style.display = "none";
     gameWin.style.removeProperty("display");
-    winMessage.textContent = `you got from "${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount} degrees`;
+    winMessage.textContent = `you got from "${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount} tries`;
     targetWord.classList.add("animate__heartBeat");
     gsap.from("#game-end-win", {
       duration: 0.5,
