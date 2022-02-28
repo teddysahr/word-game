@@ -24,9 +24,9 @@
   <body>
     <section>
       <header>
-        <button id="help-button">?</button>
+        <button id="help-button" class="btn">?</button>
         <h1 class="title"><span>3</span><span>3</span></h1>
-        <button id="about-button">*</button>
+        <button id="about-button" class="btn">@</button>
       </header>
       <div id="border"></div>
       <div id="start">
@@ -105,17 +105,26 @@
     <div id="help-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">&times;</span>
-          <h2>HELP</h2>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...</p>
-        </div>
-        <div class="modal-footer">
-          <h3>Modal Footer</h3>
-        </div>
+        <p>
+          your current word will be in pink <br />
+          <br />
+          your objective word will reamin on the bottom <br />
+          <br />
+          write new words that contain at least three different letters from the
+          current pink word <br />
+          <br />
+          you do not have to write out the objective word (once you write a word
+          that has at least three different letters in common with the objective
+          word, you've completed the 33) <br />
+          <br />
+          you must morph the word in three or less tries <br />
+          <br />
+          you can start over but that will not stop the clock!
+        </p>
+
+        <img class="modal-image" src="images/example2.png" alt="example-game" />
+
+        <button id="close-help" class="btn">close</button>
       </div>
     </div>
 
@@ -123,17 +132,12 @@
     <div id="about-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">&times;</span>
-          <h2>ABOUT</h2>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...</p>
-        </div>
-        <div class="modal-footer">
-          <h3>Modal Footer</h3>
-        </div>
+        <h2>ABOUT</h2>
+
+        <p>Some text in the Modal Body</p>
+        <p>Some other text...</p>
+
+        <button id="close-about" class="btn">close</button>
       </div>
     </div>
 

@@ -1,4 +1,3 @@
-// const chosenWordDisplay = document.getElementById("objective-words");
 const startButton = document.getElementById("start-button");
 const startWindow = document.getElementById("start");
 const inputButton = document.getElementById("input-button");
@@ -16,19 +15,13 @@ const winMessage = document.getElementById("win-message");
 const keyBoard = document.querySelector(".keyboard");
 const helpButton = document.getElementById("help-button");
 const helpModal = document.getElementById("help-modal");
+const closeHelp = document.getElementById("close-help");
 const aboutButton = document.getElementById("about-button");
 const aboutModal = document.getElementById("about-modal");
+const closeAbout = document.getElementById("close-about");
 
 gsap.from(".title", { duration: 1, y: "-200%" });
 gsap.from("#start", { duration: 2, opacity: 0 });
-
-helpButton.onclick = function () {
-  helpModal.style.display = "block";
-};
-
-aboutButton.onclick = function () {
-  aboutModal.style.display = "block";
-};
 
 const dictionary = [
   "aahed",
@@ -13326,3 +13319,19 @@ inputButton.addEventListener("click", addWord);
 startOverButton.addEventListener("click", startOver);
 
 goAgain.addEventListener("click", runGame);
+
+helpButton.onclick = function () {
+  helpModal.style.display = "block";
+};
+
+closeHelp.onclick = function () {
+  helpModal.style.display = "none";
+};
+
+aboutButton.onclick = function () {
+  aboutModal.style.display = "block";
+};
+
+closeAbout.onclick = function () {
+  aboutModal.style.display = "none";
+};

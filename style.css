@@ -74,6 +74,14 @@ button:focus {
   color: rgb(218, 158, 218);
 }
 
+#help-button {
+  padding-left: 1em;
+}
+
+#about-button {
+  padding-right: 1em;
+}
+
 #start {
   display: flex;
   flex-direction: column;
@@ -207,12 +215,14 @@ button:focus {
 
 /* Organize css, clean up js, make contact, start work on read me */
 
+/* MODALS */
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 5em; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -224,69 +234,22 @@ button:focus {
 
 /* Modal Content */
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
   position: relative;
   background-color: #fefefe;
   margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 80%;
+  padding: 2em;
+  border: 2px solid plum;
+  max-width: 30%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
+  font-size: 1em;
+  text-align: center;
 }
 
-/* Add Animation */
-@-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal-header {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
-}
-
-.modal-body {
-  padding: 2px 16px;
-}
-
-.modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+.modal-image {
+  width: 10em;
 }
