@@ -20,7 +20,6 @@ const aboutButton = document.getElementById("about-button");
 const aboutModal = document.getElementById("about-modal");
 const closeAbout = document.getElementById("close-about");
 
-gsap.from(".title", { duration: 1, y: "-200%" });
 gsap.from("#start", { duration: 2, opacity: 0 });
 
 const dictionary = [

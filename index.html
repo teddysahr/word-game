@@ -105,24 +105,36 @@
     <div id="help-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <p>
-          your current word will be in pink <br />
-          <br />
-          your objective word will reamin on the bottom <br />
-          <br />
-          write new words that contain at least three different letters from the
-          current pink word <br />
-          <br />
-          you do not have to write out the objective word (once you write a word
-          that has at least three different letters in common with the objective
-          word, you've completed the 33) <br />
-          <br />
-          you must morph the word in three or less tries <br />
-          <br />
-          you can start over but that will not stop the clock!
-        </p>
-
-        <img class="modal-image" src="images/example2.png" alt="example-game" />
+        <h1 id="help-title">how to play</h1>
+        <div class="modal-section">
+          <p>
+            your current word will be in pink <br />
+            <br />
+            your objective word will reamin on the bottom <br />
+            <br />
+            write new words that contain at least three different letters from
+            the current pink word <br />
+            <br />
+            each word must be a valid five letter word <br />
+            <br />
+            press enter to submit <br />
+            <br />
+            you do not have to write out the objective word (once you write a
+            word that has at least three different letters in common with the
+            objective word, you've completed the 33) <br />
+            <br />
+            you must morph the word in three or less tries <br />
+            <br />
+            you can start over but that will not stop the clock!
+          </p>
+        </div>
+        <div class="modal-section">
+          <img
+            class="modal-image"
+            src="images/example2.png"
+            alt="example-game"
+          />
+        </div>
 
         <button id="close-help" class="btn">close</button>
       </div>
@@ -132,10 +144,19 @@
     <div id="about-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <h2>ABOUT</h2>
+        <h1 id="about-title">about</h1>
+        <div class="about-modal-section">
+          <p>"33" created by teddy sahr</p>
 
-        <p>Some text in the Modal Body</p>
-        <p>Some other text...</p>
+          <h2>github repo</h2>
+
+          <h2>contact me:</h2>
+          <ul>
+            <li>github</li>
+            <li>linkedin</li>
+            <li>email</li>
+          </ul>
+        </div>
 
         <button id="close-about" class="btn">close</button>
       </div>
