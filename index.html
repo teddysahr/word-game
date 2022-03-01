@@ -26,7 +26,10 @@
       <header>
         <button id="help-button" class="btn">?</button>
         <h1 class="title"><span>3</span><span>3</span></h1>
-        <button id="about-button" class="btn">@</button>
+        <div id="header-right">
+          <button data-restart id="start-over-button" class="btn">*</button>
+          <button id="about-button" class="btn">@</button>
+        </div>
       </header>
       <div id="border"></div>
       <div id="start">
@@ -46,17 +49,14 @@
       </div>
 
       <div id="game" style="display: none">
-        <button type="button" id="start-over-button" class="btn">
-          start over
-        </button>
         <div id="words-section">
           <div id="word-box"></div>
           <div id="word"></div>
           <div id="target-word" class="animate__animated"></div>
         </div>
         <div id="game-end-win" style="display: none">
-          <h1>nice!</h1>
           <div id="win-message" class="correct-letter"></div>
+          <div id="final-time"></div>
           <button id="go-again" class="btn">go again</button>
         </div>
       </div>
@@ -113,7 +113,7 @@
           <p>
             your current word will be in pink <br />
             <br />
-            your objective word will reamin on the bottom <br />
+            your objective word will remain on the bottom <br />
             <br />
             write new words that contain at least three different letters from
             the current pink word <br />

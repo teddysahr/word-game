@@ -8,7 +8,7 @@ const wordBox = document.getElementById("word-box");
 const gameWindow = document.getElementById("game");
 const targetWord = document.getElementById("target-word");
 const gameWin = document.getElementById("game-end-win");
-const startOverButton = document.getElementById("start-over-button");
+const finalTime = document.getElementById("final-time");
 const alertContainer = document.querySelector("[data-alert-container]");
 const goAgain = document.getElementById("go-again");
 const winMessage = document.getElementById("win-message");
@@ -13029,6 +13029,8 @@ async function runGame() {
     opacity: 0,
   });
 
+  startGameTimer();
+
   document.addEventListener("mousedown", clickButton);
 
   document.addEventListener("mouseup", displayLetter);
@@ -13192,6 +13194,7 @@ function addWord() {
     inputText.value = "";
     scoreCount++;
     if (checkWin(addWordArray)) {
+      clearInterval(timer);
       keyBoard.style.display = "none";
       gameWin.style.removeProperty("display");
       newWordDiv.classList.remove("correct-letter");
@@ -13204,11 +13207,18 @@ function addWord() {
       winMessage.textContent = `you got from "${gameWords[0]}" to "${
         gameWords[1]
       }" in ${scoreCount - 1} tries`;
-      return;
+      if (gameTimeSec < 10) {
+        finalTime.textContent = `0${gameTimeMin}:0${gameTimeSec}`;
+        return;
+      } else {
+        finalTime.textContent = `0${gameTimeMin}:${gameTimeSec}`;
+        return;
+      }
     }
   } else if (scoreCount === 3 && !checkWin(addWordArray)) {
     showAlert("must complete on this turn");
   } else if (scoreCount === 3 && checkWin(addWordArray)) {
+    clearInterval(timer);
     document.getElementById("object-word").id = "past-word";
     const newWordDiv = document.createElement("div");
     newWordDiv.classList.add("typed-words");
@@ -13229,7 +13239,13 @@ function addWord() {
       y: "-10px",
       opacity: 0,
     });
-    return;
+    if (gameTimeSec < 10) {
+      finalTime.textContent = `0${gameTimeMin}:0${gameTimeSec}`;
+      return;
+    } else {
+      finalTime.textContent = `0${gameTimeMin}:${gameTimeSec}`;
+      return;
+    }
   }
 
   console.log(scoreCount);
@@ -13319,13 +13335,42 @@ function clickButton(e) {
     inputText.value = inputText.value.substring(0, inputText.value.length - 1);
     return;
   }
+
+  if (e.target.matches("[data-restart]")) {
+    startOver();
+    return;
+  }
+}
+
+let timer;
+
+let gameTimeSec;
+
+let gameTimeMin;
+
+function startGameTimer() {
+  gameTimeSec = 0;
+  gameTimeMin = 0;
+  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  timer = setInterval(function () {
+    // As long as the `timeLeft` is greater than 1
+    if (gameTimeSec <= 60) {
+      gameTimeSec++;
+    }
+
+    if (gameTimeSec === 60) {
+      gameTimeSec = 0;
+      gameTimeMin++;
+    }
+
+    console.log(gameTimeSec);
+    console.log(gameTimeMin);
+  }, 1000);
 }
 
 startButton.addEventListener("click", runGame);
 
 goAgain.addEventListener("click", runGame);
-
-startOverButton.addEventListener("click", startOver);
 
 helpButton.onclick = function () {
   helpModal.style.display = "block";
