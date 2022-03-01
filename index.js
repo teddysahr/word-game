@@ -13107,11 +13107,18 @@ function checkWin(arr) {
 }
 
 function startOver() {
+  console.log("start over ran");
+
+  //CLEAR BOARD
   wordBox.innerHTML = "";
   word.innerHTML = "";
-  count = 0;
   inputText.value = "";
+
+  // RESET SCORE
+  count = 0;
   scoreCount = 1;
+
+  // RESET STARTING WORD
   const firstWordDiv = document.createElement("div");
   firstWordDiv.classList.add("correct-letter");
   firstWordDiv.classList.add("typed-words");
@@ -13283,14 +13290,17 @@ function showAlert(message, duration = 1000) {
 function typeButton(e) {
   if (e.key.match(/^[a-z]$/) && inputText.value.length < 5) {
     inputText.value = inputText.value += e.key;
+    return;
   }
 
   if (e.key === "Backspace") {
     inputText.value = inputText.value.substring(0, inputText.value.length - 1);
+    return;
   }
 
   if (e.key === "Enter") {
-    inputButton.click();
+    addWord();
+    return;
   }
 }
 
@@ -13301,7 +13311,7 @@ function clickButton(e) {
   }
 
   if (e.target.matches("[data-enter]")) {
-    inputButton.click();
+    addWord();
     return;
   }
 
@@ -13313,11 +13323,9 @@ function clickButton(e) {
 
 startButton.addEventListener("click", runGame);
 
-inputButton.addEventListener("click", addWord);
+goAgain.addEventListener("click", runGame);
 
 startOverButton.addEventListener("click", startOver);
-
-goAgain.addEventListener("click", runGame);
 
 helpButton.onclick = function () {
   helpModal.style.display = "block";
