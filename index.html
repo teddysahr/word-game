@@ -26,10 +26,7 @@
       <header>
         <button id="help-button" class="btn">?</button>
         <h1 class="title"><span>3</span><span>3</span></h1>
-        <div id="header-right">
-          <button data-restart id="start-over-button" class="btn">*</button>
-          <button id="about-button" class="btn">@</button>
-        </div>
+        <button id="about-button" class="btn">@</button>
       </header>
       <div id="border"></div>
       <div id="start">
@@ -69,37 +66,40 @@
       <button id="input-button">enter</button>
     </div>
 
-    <div data-keyboard class="keyboard" style="display: none">
-      <button class="key" data-key="Q">Q</button>
-      <button class="key" data-key="W">W</button>
-      <button class="key" data-key="E">E</button>
-      <button class="key" data-key="R">R</button>
-      <button class="key" data-key="T">T</button>
-      <button class="key" data-key="Y">Y</button>
-      <button class="key" data-key="U">U</button>
-      <button class="key" data-key="I">I</button>
-      <button class="key" data-key="O">O</button>
-      <button class="key" data-key="P">P</button>
-      <div class="space"></div>
-      <button class="key" data-key="A">A</button>
-      <button class="key" data-key="S">S</button>
-      <button class="key" data-key="D">D</button>
-      <button class="key" data-key="F">F</button>
-      <button class="key" data-key="G">G</button>
-      <button class="key" data-key="H">H</button>
-      <button class="key" data-key="J">J</button>
-      <button class="key" data-key="K">K</button>
-      <button class="key" data-key="L">L</button>
-      <div class="space"></div>
-      <button data-enter class="key large">ENTER</button>
-      <button class="key" data-key="Z">Z</button>
-      <button class="key" data-key="X">X</button>
-      <button class="key" data-key="C">C</button>
-      <button class="key" data-key="V">V</button>
-      <button class="key" data-key="B">B</button>
-      <button class="key" data-key="N">N</button>
-      <button class="key" data-key="M">M</button>
-      <button data-delete class="key large"><<<</button>
+    <div id="keyboard-section" style="display: none">
+      <button data-restart id="reset" class="key">RESET</button>
+      <div data-keyboard class="keyboard">
+        <button class="key" data-key="Q">Q</button>
+        <button class="key" data-key="W">W</button>
+        <button class="key" data-key="E">E</button>
+        <button class="key" data-key="R">R</button>
+        <button class="key" data-key="T">T</button>
+        <button class="key" data-key="Y">Y</button>
+        <button class="key" data-key="U">U</button>
+        <button class="key" data-key="I">I</button>
+        <button class="key" data-key="O">O</button>
+        <button class="key" data-key="P">P</button>
+        <div class="space"></div>
+        <button class="key" data-key="A">A</button>
+        <button class="key" data-key="S">S</button>
+        <button class="key" data-key="D">D</button>
+        <button class="key" data-key="F">F</button>
+        <button class="key" data-key="G">G</button>
+        <button class="key" data-key="H">H</button>
+        <button class="key" data-key="J">J</button>
+        <button class="key" data-key="K">K</button>
+        <button class="key" data-key="L">L</button>
+        <div class="space"></div>
+        <button data-enter class="key large">ENTER</button>
+        <button class="key" data-key="Z">Z</button>
+        <button class="key" data-key="X">X</button>
+        <button class="key" data-key="C">C</button>
+        <button class="key" data-key="V">V</button>
+        <button class="key" data-key="B">B</button>
+        <button class="key" data-key="N">N</button>
+        <button class="key" data-key="M">M</button>
+        <button data-delete class="key large"><<<</button>
+      </div>
     </div>
 
     <!-- MODALS -->
@@ -109,26 +109,28 @@
       <!-- Modal content -->
       <div class="modal-content">
         <h1 id="help-title">how to play</h1>
-        <div class="modal-section">
+        <div id="paragraph">
           <p>
-            your current word will be in pink <br />
+            morph the starting word into the objective word
             <br />
-            your objective word will remain on the bottom <br />
+            <br />
+            your starting word will be on top - your objective word will remain
+            on the bottom
+            <br />
+            <br />
+            your current word will be in
+            <span class="correct-letter">pink</span>
+            <br />
             <br />
             write new words that contain at least three different letters from
-            the current pink word <br />
+            the current word - you don't have to rewrite the objective word
             <br />
-            each word must be a valid five letter word <br />
             <br />
-            press enter to submit <br />
+            each word must be a valid five letter word - press enter to submit
             <br />
-            you do not have to write out the objective word (once you write a
-            word that has at least three different letters in common with the
-            objective word, you've completed the 33) <br />
             <br />
-            you must morph the word in three or less tries <br />
-            <br />
-            you can start over but that will not stop the clock!
+            you must morph the word in three or less tries - you can reset but
+            that will not stop the clock!
           </p>
         </div>
         <div class="modal-section">
@@ -149,16 +151,34 @@
       <div class="modal-content">
         <h1 id="about-title">about</h1>
         <div class="about-modal-section">
-          <p>"33" created by teddy sahr</p>
+          <h1>"33" created by teddy sahr</h1>
 
-          <h2>github repo</h2>
+          <h2>
+            <a href="https://github.com/teddysahr/word-game" target="_blank"
+              >github repo</a
+            >
+          </h2>
 
-          <h2>contact me:</h2>
-          <ul>
-            <li>github</li>
-            <li>linkedin</li>
-            <li>email</li>
-          </ul>
+          <div>
+            <h2>contact me:</h2>
+            <ul id="links">
+              <li>
+                <a href="mailto:teddysahr@gmail.com">email</a>
+              </li>
+              <li>
+                <a href="https://github.com/teddysahr" target="_blank"
+                  >github</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/edward-sahr-5b057a22b/"
+                  target="_blank"
+                  >linkedin</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
 
         <button id="close-about" class="btn">close</button>

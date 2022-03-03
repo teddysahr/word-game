@@ -28,6 +28,15 @@ header {
   padding: 0.2rem;
 }
 
+a {
+  text-decoration: none;
+  color: rgb(218, 158, 218);
+}
+
+a:hover {
+  color: black;
+}
+
 #border {
   height: 2px;
   background: linear-gradient(
@@ -83,10 +92,12 @@ button:focus {
 
 #help-button {
   padding-left: 1em;
+  width: 3em;
 }
 
-#header-right {
+#about-button {
   padding-right: 1em;
+  width: 3em;
 }
 
 #start {
@@ -161,6 +172,10 @@ button:focus {
 
 .key.large {
   grid-column: span 3;
+}
+
+#reset {
+  margin-left: 1em;
 }
 
 #input-area {
@@ -272,9 +287,23 @@ button:focus {
   width: 100%;
 }
 
+#paragraph {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0.5em;
+  border: 2px solid rgb(218, 158, 218);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  width: 100%;
+}
+
 .about-modal-section {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 2em;
   padding: 0.5em;
   border: 2px solid rgb(218, 158, 218);
@@ -283,6 +312,7 @@ button:focus {
   border-right: 0;
   width: 100%;
   font-size: 2em;
+  text-align: center;
 }
 
 #help-title {
@@ -291,4 +321,11 @@ button:focus {
 
 #about-title {
   font-size: 2em;
+}
+
+#links {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  padding-top: 2em;
 }

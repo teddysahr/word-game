@@ -12,7 +12,7 @@ const finalTime = document.getElementById("final-time");
 const alertContainer = document.querySelector("[data-alert-container]");
 const goAgain = document.getElementById("go-again");
 const winMessage = document.getElementById("win-message");
-const keyBoard = document.querySelector(".keyboard");
+const keyBoardSection = document.getElementById("keyboard-section");
 const helpButton = document.getElementById("help-button");
 const helpModal = document.getElementById("help-modal");
 const closeHelp = document.getElementById("close-help");
@@ -13023,7 +13023,7 @@ async function runGame() {
     opacity: 0,
   });
 
-  gsap.from(".keyboard", {
+  gsap.from("#keyboard-section", {
     duration: 0.5,
     y: "-10px",
     opacity: 0,
@@ -13052,7 +13052,7 @@ async function runGame() {
 
   gameWindow.style.removeProperty("display");
 
-  keyBoard.style.removeProperty("display");
+  keyBoardSection.style.removeProperty("display");
 
   gameWords = getWords();
 
@@ -13195,7 +13195,7 @@ function addWord() {
     scoreCount++;
     if (checkWin(addWordArray)) {
       clearInterval(timer);
-      keyBoard.style.display = "none";
+      keyBoardSection.style.display = "none";
       gameWin.style.removeProperty("display");
       newWordDiv.classList.remove("correct-letter");
       targetWord.classList.add("animate__heartBeat");
@@ -13230,7 +13230,7 @@ function addWord() {
     count = 0;
     word.innerHTML = "";
     inputText.value = "";
-    keyBoard.style.display = "none";
+    keyBoardSection.style.display = "none";
     gameWin.style.removeProperty("display");
     winMessage.textContent = `you got from "${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount} tries`;
     targetWord.classList.add("animate__heartBeat");
