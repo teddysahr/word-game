@@ -13009,6 +13009,12 @@ let currentWord;
 
 let scoreCount = 1;
 
+let timer;
+
+let gameTimeSec;
+
+let gameTimeMin;
+
 function getWords() {
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
@@ -13069,8 +13075,6 @@ async function runGame() {
   lastWordDiv.classList.add("typed-words");
   lastWordDiv.textContent = gameWords[1];
   targetWord.appendChild(lastWordDiv);
-
-  console.log(currentWord);
 }
 
 function checkWin(arr) {
@@ -13083,8 +13087,6 @@ function checkWin(arr) {
       uniqueLettersCheck.push(letter);
     }
   }
-
-  console.log(uniqueLettersCheck);
 
   const gameWordArray = gameWords[1].split("");
 
@@ -13108,8 +13110,6 @@ function checkWin(arr) {
 }
 
 function startOver() {
-  console.log("start over ran");
-
   //CLEAR BOARD
   wordBox.innerHTML = "";
   word.innerHTML = "";
@@ -13151,8 +13151,6 @@ function addWord() {
       uniqueLettersCheck.push(letter);
     }
   }
-
-  console.log(currentWordArray);
 
   for (letter of currentWordArray) {
     compareWordObj[letter] = true;
@@ -13246,22 +13244,16 @@ function addWord() {
       return;
     }
   }
-
-  console.log(scoreCount);
-
-  console.log(compareWordObj);
 }
 
 function displayLetter() {
   const currentWordArray = currentWord.split("");
-  console.log(currentWordArray);
+
   const finalWordArray = gameWords[1].split("");
 
   const compareWordObj = {};
 
   const finalWordObj = {};
-
-  console.log(currentWordArray);
 
   for (letter of currentWordArray) {
     compareWordObj[letter] = true;
@@ -13341,12 +13333,6 @@ function clickButton(e) {
   }
 }
 
-let timer;
-
-let gameTimeSec;
-
-let gameTimeMin;
-
 function startGameTimer() {
   gameTimeSec = 0;
   gameTimeMin = 0;
@@ -13361,9 +13347,6 @@ function startGameTimer() {
       gameTimeSec = 0;
       gameTimeMin++;
     }
-
-    console.log(gameTimeSec);
-    console.log(gameTimeMin);
   }, 1000);
 }
 
