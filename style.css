@@ -1,3 +1,6 @@
+/* GLOBAL ==========================================================
+==================================================================== */
+
 * {
   font-family: "Space Grotesk", sans-serif;
 }
@@ -17,6 +20,38 @@ body {
   font-size: clamp(0.8rem, 2vmin, 2.5rem);
 }
 
+/* COMPONENTS ======================================================
+==================================================================== */
+
+button {
+  touch-action: manipulation;
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn {
+  font-size: 2rem;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border: none;
+  outline: none;
+  color: rgb(218, 158, 218);
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* HEADER ==========================================================
+==================================================================== */
+
 header {
   display: flex;
   flex-direction: row;
@@ -26,15 +61,6 @@ header {
   font-size: 2.5rem;
   color: black;
   padding: 0.2rem;
-}
-
-a {
-  text-decoration: none;
-  color: rgb(218, 158, 218);
-}
-
-a:hover {
-  color: black;
 }
 
 #border {
@@ -64,32 +90,6 @@ a:hover {
   }
 }
 
-button {
-  touch-action: manipulation;
-}
-
-button:focus {
-  outline: none;
-}
-
-.btn {
-  font-size: 2rem;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-}
-
-.btn:hover {
-  border: none;
-  outline: none;
-  color: rgb(218, 158, 218);
-  cursor: pointer;
-}
-
-.btn:focus {
-  outline: none;
-}
-
 #help-button {
   padding-left: 1em;
   width: 3em;
@@ -100,6 +100,9 @@ button:focus {
   width: 3em;
 }
 
+/* START PAGE ======================================================
+==================================================================== */
+
 #start {
   display: flex;
   flex-direction: column;
@@ -109,6 +112,17 @@ button:focus {
   font-size: 1.25em;
   gap: 3em;
   padding: 3em;
+}
+
+/* GAME/WORD SECTION ===============================================
+==================================================================== */
+
+.typed-words {
+  text-align: center;
+}
+
+.correct-letter {
+  color: rgb(218, 158, 218);
 }
 
 .image {
@@ -138,6 +152,9 @@ button:focus {
 #past-word {
   color: black;
 }
+
+/* KEYBOARD ========================================================
+==================================================================== */
 
 .keyboard {
   display: grid;
@@ -178,31 +195,8 @@ button:focus {
   margin-left: 1em;
 }
 
-#input-area {
-  display: none;
-}
-
-#game-end-win {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1em;
-  font-size: 1.5em;
-  margin-top: 4em;
-}
-
-#win-message {
-  width: 70%;
-}
-
-.typed-words {
-  text-align: center;
-}
-
-.correct-letter {
-  color: rgb(218, 158, 218);
-}
+/* ALERTS ==========================================================
+==================================================================== */
 
 .alert-container {
   position: fixed;
@@ -235,9 +229,32 @@ button:focus {
   opacity: 0;
 }
 
-/* Organize css, clean up js, make contact, start work on read me */
+/* WIN MESSAGE =====================================================
+==================================================================== */
 
-/* MODALS */
+#game-end-win {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1em;
+  font-size: 1.5em;
+  margin-top: 4em;
+}
+
+#win-message {
+  width: 70%;
+}
+
+/* HIDDEN INPUT ====================================================
+==================================================================== */
+
+#input-area {
+  display: none;
+}
+
+/* MODALS ==========================================================
+==================================================================== */
 
 .modal {
   display: none;
@@ -287,7 +304,7 @@ button:focus {
   width: 100%;
 }
 
-#paragraph {
+#directions {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -328,4 +345,13 @@ button:focus {
   flex-direction: row;
   gap: 2em;
   padding-top: 2em;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(218, 158, 218);
+}
+
+a:hover {
+  color: black;
 }
