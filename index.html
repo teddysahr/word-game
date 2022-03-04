@@ -22,13 +22,19 @@
     <title>33</title>
   </head>
   <body>
-    <section>
+    <div>
+      <!-- HEADER -->
+
       <header>
         <button id="help-button" class="btn">?</button>
         <h1 class="title"><span>3</span><span>3</span></h1>
         <button id="about-button" class="btn">@</button>
       </header>
+
       <div id="border"></div>
+
+      <!-- START SCREEN -->
+
       <div id="start">
         <p>
           what: morph the <span>starting word</span> into the objective word in
@@ -45,6 +51,8 @@
         <button id="start-button" class="btn">start</button>
       </div>
 
+      <!-- WORD SECTION -->
+
       <div id="game" style="display: none">
         <div id="words-section">
           <div id="word-box"></div>
@@ -57,14 +65,19 @@
           <button id="go-again" class="btn">go again</button>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- ALERT -->
 
     <div class="alert-container" data-alert-container></div>
 
+    <!-- HIDDEN INPUT -->
+
     <div id="input-area">
       <input id="input-text" type="text" maxlength="5" />
-      <button id="input-button">enter</button>
     </div>
+
+    <!-- KEYBOARD -->
 
     <div id="keyboard-section" style="display: none">
       <button data-restart id="reset" class="key">RESET</button>
@@ -104,7 +117,6 @@
 
     <!-- MODALS -->
 
-    <!-- HELP -->
     <div id="help-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
@@ -145,7 +157,6 @@
       </div>
     </div>
 
-    <!-- ABOUT -->
     <div id="about-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
@@ -184,6 +195,8 @@
         <button id="close-about" class="btn">close</button>
       </div>
     </div>
+
+    <!-- SCRIPTS -->
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"

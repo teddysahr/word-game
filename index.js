@@ -1,6 +1,5 @@
 const startButton = document.getElementById("start-button");
 const startWindow = document.getElementById("start");
-const inputButton = document.getElementById("input-button");
 const inputWords = document.getElementById("input-words");
 const word = document.getElementById("word");
 const inputText = document.getElementById("input-text");
