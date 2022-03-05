@@ -1,3 +1,4 @@
+// DEPENDENCIES
 const startButton = document.getElementById("start-button");
 const startWindow = document.getElementById("start");
 const inputWords = document.getElementById("input-words");
@@ -19,8 +20,7 @@ const aboutButton = document.getElementById("about-button");
 const aboutModal = document.getElementById("about-modal");
 const closeAbout = document.getElementById("close-about");
 
-gsap.from("#start", { duration: 2, opacity: 0 });
-
+// DICTIONARY
 const dictionary = [
   "aahed",
   "aalii",
@@ -12996,6 +12996,7 @@ const dictionary = [
   "shave",
 ];
 
+//WORD LIST
 const wordList = [
   ["robot", "wince"],
   ["power", "guild"],
@@ -13003,25 +13004,33 @@ const wordList = [
   ["brick", "slant"],
 ];
 
+// VARIABLES
 let gameWords;
-
 let currentWord;
-
 let scoreCount = 1;
-
 let timer;
-
 let gameTimeSec;
-
 let gameTimeMin;
 
+// START FADE IN
+gsap.from("#start", { duration: 2, opacity: 0 });
+
+// FUNCTIONS
 function getWords() {
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
 async function runGame() {
+  // REMOVE START SCREEN
   await gsap.to("#start", { duration: 0.5, opacity: 0 });
+
   startWindow.remove();
+
+  // DISPLAY GAME SCREEN
+  gameWindow.style.removeProperty("display");
+
+  keyBoardSection.style.removeProperty("display");
+
   gsap.from("#game", {
     duration: 0.5,
     y: "-10px",
@@ -13034,33 +13043,29 @@ async function runGame() {
     opacity: 0,
   });
 
+  //START TIMER
   startGameTimer();
 
+  //ADD EVENT LISTENERS
   document.addEventListener("mousedown", clickButton);
-
   document.addEventListener("mouseup", displayLetter);
-
   document.addEventListener("keyup", displayLetter);
-
   document.addEventListener("keydown", typeButton);
 
+  // RESET FROM PREVIOUS GAME
+  count = 0;
+  scoreCount = 1;
+
+  gameWin.style.display = "none";
   targetWord.classList.remove("animate__heartBeat");
 
   wordBox.innerHTML = "";
   word.innerHTML = "";
-  count = 0;
   inputText.value = "";
-  scoreCount = 1;
   targetWord.innerHTML = "";
 
-  gameWin.style.display = "none";
-
-  gameWindow.style.removeProperty("display");
-
-  keyBoardSection.style.removeProperty("display");
-
+  // CREATE NEW GAME
   gameWords = getWords();
-
   currentWord = gameWords[0];
 
   const firstWordDiv = document.createElement("div");
@@ -13071,15 +13076,16 @@ async function runGame() {
   wordBox.appendChild(firstWordDiv);
 
   const lastWordDiv = document.createElement("div");
-
   lastWordDiv.classList.add("typed-words");
   lastWordDiv.textContent = gameWords[1];
   targetWord.appendChild(lastWordDiv);
 }
 
 function checkWin(arr) {
+  // VARIABLE
   let finalCount = 0;
 
+  // REMOVE REPEATED LETTERS IN WORDS
   const uniqueLettersCheck = [];
 
   for (letter of arr) {
@@ -13088,20 +13094,22 @@ function checkWin(arr) {
     }
   }
 
+  // CREATE OBJECTIVE WORD OBJECT
   const gameWordArray = gameWords[1].split("");
-
   const compareWordObj = {};
 
   for (letter of gameWordArray) {
     compareWordObj[letter] = true;
   }
 
+  // COMPARE USER WORD WITH OBJECTIVE WORD
   for (letter of uniqueLettersCheck) {
     if (letter in compareWordObj) {
       finalCount++;
     }
   }
 
+  // IF THREE LETTERS IN COMMON, WIN
   if (finalCount >= 3) {
     return true;
   } else {
@@ -13130,19 +13138,15 @@ function startOver() {
 }
 
 function addWord() {
+  // THREE LETTER COUNT VARIABLE
   let count = 0;
 
+  // CONVERT USER INPUT TO LOWER CASE STRING FOR DICTIONARY COMPARISON
   const wordString = inputText.value.toString();
-
   const lowerCaseWordString = wordString.toLowerCase();
 
-  const allLowerCase = inputText.value.toLowerCase();
-
-  const addWordArray = allLowerCase.split("");
-
-  const currentWordArray = currentWord.split("");
-
-  const compareWordObj = {};
+  // REMOVE REPEATED LETTERS FROM INPUT WORDS
+  const addWordArray = lowerCaseWordString.split("");
 
   const uniqueLettersCheck = [];
 
@@ -13152,31 +13156,40 @@ function addWord() {
     }
   }
 
+  // MAKE CURRENT WORD COMPARABLE
+  const currentWordArray = currentWord.split("");
+
+  const compareWordObj = {};
+
   for (letter of currentWordArray) {
     compareWordObj[letter] = true;
   }
 
+  // IF THERE'S A LETTER IN COMMON, ADD TO COUNT
   for (letter of uniqueLettersCheck) {
     if (letter in compareWordObj) {
       count++;
     }
   }
 
+  // IF THE WORD IS LESS THAN 5 LETTERS, DISPLAY ALERT
   if (addWordArray.length < 5) {
     showAlert("not enough letters!");
     count = 0;
     return;
   }
-
+  // IF THE INPUT WORD IS NOT VALID, DISPLAY MESSAGE
   if (!dictionary.includes(lowerCaseWordString)) {
     showAlert("not a word!");
     count = 0;
     return;
+    // IF THE INPUT WORD IS VALID, BUT DOES NOT CONTAIN ENOUGH COMMON LETTERS, DISPLAY MESSAGE
   } else if (count < 3) {
     showAlert(
       "word must contain at least three letters from the previous word!"
     );
     count = 0;
+    // IF THE WORD IS VALID AND CONTAINS ENOUGH COMMON LETTERS - AND IT'S NOT THE THIRD TRY, ADD WORD
   } else if (scoreCount < 3) {
     document.getElementById("object-word").id = "past-word";
     const newWordDiv = document.createElement("div");
@@ -13190,6 +13203,7 @@ function addWord() {
     word.innerHTML = "";
     inputText.value = "";
     scoreCount++;
+    // IF THE WORD HAS THREE LETTERS IN COMMON WITH THE OBJECTIVE WORD AS WELL, WIN
     if (checkWin(addWordArray)) {
       clearInterval(timer);
       keyBoardSection.style.display = "none";
@@ -13212,14 +13226,15 @@ function addWord() {
         return;
       }
     }
+    // IF IT IS THE THIRD TRY AND THE WORD DOES NOT CONTAIN THREE COMMON LETTERS WITH THE OBJECT WORD, DISPLAY MESSAGE
   } else if (scoreCount === 3 && !checkWin(addWordArray)) {
     showAlert("must complete on this turn");
+    // IF IT IS THE THIRD TRY AND THE WORD CONTAINS THREE COMMON LETTERS WITH THE OBJECT WORD, WIN
   } else if (scoreCount === 3 && checkWin(addWordArray)) {
     clearInterval(timer);
     document.getElementById("object-word").id = "past-word";
     const newWordDiv = document.createElement("div");
     newWordDiv.classList.add("typed-words");
-    // newWordDiv.classList.add("correct-letter");
     newWordDiv.textContent = inputText.value.toLowerCase();
     newWordDiv.id = "object-word";
     wordBox.appendChild(newWordDiv);
@@ -13247,24 +13262,21 @@ function addWord() {
 }
 
 function displayLetter() {
+  // MAKE CURRENT WORD COMPARABLE
   const currentWordArray = currentWord.split("");
-
-  const finalWordArray = gameWords[1].split("");
-
   const compareWordObj = {};
-
-  const finalWordObj = {};
 
   for (letter of currentWordArray) {
     compareWordObj[letter] = true;
   }
-
-  for (letter of finalWordArray) {
-    finalWordObj[letter] = true;
-  }
+  // CLEAR DISPLAY
   word.innerHTML = "";
+
+  // MAKE LOWER CASE
   const lowerCase = inputText.value.toLowerCase();
   const inputArray = lowerCase.split("");
+
+  // IF TYPED LETTER IS IN CURRENT WORD, DISPLAY PINK
   for (let i = 0; i < inputArray.length; i++) {
     if (inputArray[i] in compareWordObj) {
       const newLetter = document.createElement("div");
@@ -13280,12 +13292,14 @@ function displayLetter() {
 }
 
 function showAlert(message, duration = 1000) {
+  // DISPLAY ALERT
   const alert = document.createElement("div");
   alert.textContent = message;
   alert.classList.add("alert");
   alertContainer.prepend(alert);
   if (duration == null) return;
 
+  // FADE OUT ALERT
   setTimeout(() => {
     alert.classList.add("hide");
     alert.addEventListener("transitionend", () => {
@@ -13295,16 +13309,19 @@ function showAlert(message, duration = 1000) {
 }
 
 function typeButton(e) {
+  // MAKE SURE KEY PRESS IS LETTER AND WORD IS MAX 5 LETTERS
   if (e.key.match(/^[a-z]$/) && inputText.value.length < 5) {
     inputText.value = inputText.value += e.key;
     return;
   }
 
+  // DELETE LETTERS
   if (e.key === "Backspace") {
     inputText.value = inputText.value.substring(0, inputText.value.length - 1);
     return;
   }
 
+  // ENTER PRESS ADDS WORD
   if (e.key === "Enter") {
     addWord();
     return;
@@ -13312,21 +13329,25 @@ function typeButton(e) {
 }
 
 function clickButton(e) {
+  // VIRTUAL KEYBOARD LETTERS
   if (e.target.matches("[data-key]") && inputText.value.length < 5) {
     inputText.value = inputText.value += e.target.dataset.key;
     return;
   }
 
+  // VIRTUAL KEYBOARD ENTER
   if (e.target.matches("[data-enter]")) {
     addWord();
     return;
   }
 
+  // VIRTUAL KEYBOARD DELETE
   if (e.target.matches("[data-delete]")) {
     inputText.value = inputText.value.substring(0, inputText.value.length - 1);
     return;
   }
 
+  // VIRTUAL KEYBOARD RESET GAME
   if (e.target.matches("[data-restart]")) {
     startOver();
     return;
@@ -13334,11 +13355,12 @@ function clickButton(e) {
 }
 
 function startGameTimer() {
+  // SECOND AND MINUTE VARIABLES
   gameTimeSec = 0;
   gameTimeMin = 0;
-  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+
+  // INCREMENT MINUTE AFTER 60 SECONDS
   timer = setInterval(function () {
-    // As long as the `timeLeft` is greater than 1
     if (gameTimeSec <= 60) {
       gameTimeSec++;
     }
@@ -13350,10 +13372,11 @@ function startGameTimer() {
   }, 1000);
 }
 
+// BUTTON EVENT LISTENERS
 startButton.addEventListener("click", runGame);
-
 goAgain.addEventListener("click", runGame);
 
+// MODAL BUTTON CLICKS
 helpButton.onclick = function () {
   helpModal.style.display = "block";
 };
