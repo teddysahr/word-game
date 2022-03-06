@@ -13000,8 +13000,18 @@ const dictionary = [
 const wordList = [
   ["robot", "wince"],
   ["power", "guild"],
-  ["smack", "blimp"],
+  ["smack", "glove"],
   ["brick", "slant"],
+  ["blimp", "front"],
+  ["stack", "video"],
+  ["blunt", "chime"],
+  ["sport", "alien"],
+  ["water", "music"],
+  ["break", "thing"],
+  ["crawl", "judge"],
+  ["plain", "frost"],
+  ["melon", "cramp"],
+  ["clone", "graph"],
 ];
 
 // VARIABLES
@@ -13215,9 +13225,9 @@ function addWord() {
         y: "-10px",
         opacity: 0,
       });
-      winMessage.textContent = `you got from "${gameWords[0]}" to "${
-        gameWords[1]
-      }" in ${scoreCount - 1} tries`;
+      winMessage.textContent = `"${gameWords[0]}" to "${gameWords[1]}" in ${
+        scoreCount - 1
+      }`;
       if (gameTimeSec < 10) {
         finalTime.textContent = `0${gameTimeMin}:0${gameTimeSec}`;
         return;
@@ -13244,7 +13254,7 @@ function addWord() {
     inputText.value = "";
     keyBoardSection.style.display = "none";
     gameWin.style.removeProperty("display");
-    winMessage.textContent = `you got from "${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount} tries`;
+    winMessage.textContent = `"${gameWords[0]}" to "${gameWords[1]}" in ${scoreCount}`;
     targetWord.classList.add("animate__heartBeat");
     gsap.from("#game-end-win", {
       duration: 0.5,
