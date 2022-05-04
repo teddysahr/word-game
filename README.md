@@ -20,6 +20,7 @@ No installation required.
 
 ## Usage
 Visit the deployment on GitHub pages.
+https://teddysahr.github.io/word-game/
 
 ## Contributions
 Any development feedback welcome at the email below!
